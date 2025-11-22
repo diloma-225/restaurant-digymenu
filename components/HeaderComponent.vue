@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="absolute inset-0 w-full h-full overflow-hidden cover shadow-md">
-      <NuxtImg
+      <img
         :src="getCoverUrl(currentRestaurant?.cover)"
         alt="Cover Image"
         loading="lazy"
