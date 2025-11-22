@@ -50,7 +50,7 @@
     </div>
     <div class="absolute inset-0 w-full h-full overflow-hidden cover shadow-md">
       <NuxtImg
-        :src="coverUrl"
+        :src="getCoverUrl(currentRestaurant?.cover)"
         alt="Cover Image"
         loading="lazy"
         class="absolute inset-0 object-cover w-full h-full sm:h-full"
@@ -65,7 +65,7 @@
         <div
           class="w-[200px] h-[200px] md:w-[150px]  md:h-[150px] sm:w-[80px] sm:h-[80px] overflow-hidden rounded-full flex items-center justify-center"
         >
-          <NuxtImg :src="logoUrl" loading="lazy" alt="restaurant_logo" v-if="currentRestaurant" />
+          <NuxtImg :src="getImageUrl(currentRestaurant?.logo)" loading="lazy" alt="restaurant_logo" v-if="currentRestaurant" />
         </div>
       </div>
     </div>
@@ -100,8 +100,9 @@ const toggleExpansion = ()=>{
   isExpanded.value = !isExpanded.value;
 }
 
-const getImageUrl = async (imageName) => {
-  try {
+const getImageUrl = (imageName:string) => {
+ 
+  if (imageName) {
     const { data } = supabase
         .storage
         .from('logos')
@@ -111,14 +112,10 @@ const getImageUrl = async (imageName) => {
       return data.publicUrl;
     }
 
-    // Retourner l'URL publique de l'image
-    
-  } catch (error) {
-    console.error('Error fetching image URL:', error);
     return null; // En cas d'erreur, tu peux retourner null ou gérer autrement
-  }
+    }
 };
-const getCoverUrl = async (imageName) => {
+const getCoverUrl = (imageName:string) => {
   try {
     const { data } = supabase
         .storage
@@ -137,8 +134,8 @@ const getCoverUrl = async (imageName) => {
   }
 };
 
-const logoUrl = await getImageUrl(currentRestaurant.value.logo);
-const coverUrl = await getCoverUrl(currentRestaurant.value.cover);
+
+
 </script>
 
 <style scoped>
