@@ -9,7 +9,7 @@
       <span class="text-lg sm:text-sm font-medium text-[#D9D9D9]">{{currentRestaurant?.address  }}</span>
     </div>
     <div class="w-full flex justify-center">
-      <nuxt-link to="https://epiqHub.ci">
+      <nuxt-link to="https://digymenu.netlify.app">
         <img src="/logo.png" class="w-24 mx-auto" />
       </nuxt-link>
       
@@ -27,7 +27,7 @@ function formatTel(numero: string): string {
   if (!numero) return ""; // Empêcher les erreurs sur une valeur vide
 
 
-  return "+225 " + numero;
+  return numero;
 }
 
 </script>

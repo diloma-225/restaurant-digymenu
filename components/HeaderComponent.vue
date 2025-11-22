@@ -53,7 +53,6 @@
       <img
         :src="getCoverUrl(currentRestaurant?.cover)"
         alt="Cover Image"
-        loading="lazy"
         class="absolute inset-0 object-cover w-full h-full sm:h-full"
       />
       <div class="filter-overlay"></div>
