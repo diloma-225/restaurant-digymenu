@@ -3,6 +3,7 @@
       <div
       class="btn waiter-btn flex items-center justify-center gap-3 text-lg sm:text-sm py-3 px-5 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-black font-semibold shadow-md transition-all duration-300"
       :class="{ 'w-12': !isExpanded, 'w-72 h-36 top-10': isExpanded }"
+       v-if="currentRestaurant"
     >
       <!-- Icône -->
       <div class="flex items-center justify-center" title="Appeler un serveur" @click="toggleExpansion" v-if="!isExpanded">
@@ -54,7 +55,6 @@
         alt="Cover Image"
         loading="lazy"
         class="absolute inset-0 object-cover w-full h-full sm:h-full"
-        v-if="currentRestaurant"
       />
       <div class="filter-overlay"></div>
     </div>
@@ -65,7 +65,7 @@
         <div
           class="w-[200px] h-[200px] md:w-[150px]  md:h-[150px] sm:w-[80px] sm:h-[80px] overflow-hidden rounded-full flex items-center justify-center"
         >
-          <NuxtImg :src="getImageUrl(currentRestaurant?.logo)" loading="lazy" alt="restaurant_logo" v-if="currentRestaurant" />
+          <img :src="getImageUrl(currentRestaurant?.logo)" alt="restaurant_logo" />
         </div>
       </div>
     </div>
